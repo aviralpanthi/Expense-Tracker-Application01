@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .page6{
+        height: 100vh;
+        width: 100vw;
+        background-color: #E3F1FB ;
+    }
+    .page6 .nav6 a{
+        font-size: 1.5vw;
+        height: 10vh;
+        width: 100%;
+padding: 10px 150px;
+margin-top: 20px;
+background-color: rgb(168, 236, 236);
+
+     }   
+
+     .page6 input{
+        
+       border: none;
+padding: 10px 150px 10px 10px;
+background-color: rgb(168, 236, 236);
+     }
+   
+      .page6 button{
+         border: none;
+padding: 20px 100px;
+border-radius: 10px;
+font-size: 1.5vw;
+color: rgb(90, 86, 86);
+background-color: rgb(168, 236, 236);
+      }
+
+
+    </style>
+</head>
+<body>
+<div class="page6">
+ <div class="nav6">
+    <%- include("header.ejs")%>
+    <!--  -->
+    <%- include("nav.ejs")%>
+    <!--  -->
+ </div><br><br>
+    <form action="/reset" method="POST">
+        <input type="password" name="oldpassword" placeholder="Old Password" /><br><br>
+        <input type="password" name="newpassword" placeholder="New Password" /><br><br>
+        <button>Reset</button>
+    </form>
+    <!--  -->
+    <%- include("footer.ejs")%>
+</div>
+
+</body>
+</html>

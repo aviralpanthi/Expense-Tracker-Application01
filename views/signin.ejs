@@ -1,0 +1,19 @@
+<div class="page3">
+    <%- include("header.ejs")%>
+<%- include("nav.ejs")%>
+
+<div class="main3">
+    <h1>Sign In if you already have Account</h1>
+    <form action="/signin" method="post">
+<br><br><h4>Username</h4>
+        <input type="text" placeholder="Aviral" name="username"><br><br>
+        <h4>Password</h4>
+        <input type="password" name="password" placeholder="*****"><br><br>
+        <button>Signin</button> &nbsp;&nbsp;<br><br>
+        <a href="/forget">Forget Password ?</a>
+    
+    </form>
+</div>
+
+<%- include("footer.ejs")%>
+</div>

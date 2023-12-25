@@ -1,0 +1,102 @@
+1. install passport packages
+passport passport-local passport-local-mongoose express-session mongoose
+
+2. plugin the schema with passport-local-mongoose
+CODE:-
+model.plugin(plm)
+
+3. in app.js code the boilerplate
+passport/express-session
+
+CODE:-
+
+const passport = require("passport");
+const session = require("express-session");
+
+const User = require("./models/usermodel");
+
+
+app.use(
+    session({
+        saveUninitialized: true,
+        resave: true,
+        secret: "asdhbcfkjf",
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+4. in index.js use strategy
+
+CODE: 
+const User = require("../models/usermodel");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+passport.use(new LocalStrategy(User.authenticate()));
+
+---------------------------------------------------------------------------------------------------------
+
+1. In order to change the 'username' default  field to let's say 'email'
+Step 1: in model file 
+model.plugin(plm, {usernameField: 'email'})
+
+Step 2: in index.js we replace 
+"passport.use(new LocalStrategy(User.authenticate()));"
+to 
+passport.use(User.createStrategy());
+----------------------------------------------------------------------------------------------------------
+
+
+SIGNUP CODE
+router.post("/signup", async function (req, res, next) {
+    try {
+        await User.register(
+            { username: req.body.username, email: req.body.email },
+            req.body.password
+        );
+        res.redirect("/signin");
+    } catch (error) {
+        console.log(error);
+        res.send(error);
+    }
+});
+
+
+SIGNIN CODE
+router.post(
+    "/signin",
+    passport.authenticate("local", {
+        successRedirect: "/profile",
+        failureRedirect: "/signin",
+    }),
+    function (req, res, next) {}
+);
+
+
+AUTHENTICATED ROUTE MIDDLEWARE
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        next();
+    } else {
+        res.redirect("/signin");
+    }
+}
+
+
+SIGNOUT CODE
+router.get("/signout", isLoggedIn, function (req, res, next) {
+    req.logout(() => {
+        res.redirect("/signin");
+    });
+});
+
+
+
+
+
+
+
+

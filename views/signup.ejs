@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    
+</head>
+<body>
+    <div class="full">
+    <div class="part1">
+    <%- include("header.ejs")%>
+    <%- include("nav.ejs")%>
+    <br>
+    <h2>Get started managing your Expenses today.</h2>
+   <br><br>
+        <div class="card">
+            <form action="/signup" method="post">
+                <h4>Username</h4>
+                <input type="text" placeholder="Aviral" name="username"><br><br>
+                <h4 class="mail">Email</h4>
+                <input type="email" name="email" placeholder="abc123@gmail.com"><br><br>
+                <h4>Password</h4>
+                <input type="password" name="password" placeholder="*****"><br><br>
+                <button>Signup</button> &nbsp;&nbsp;<br><br>
+                <a class="signin" href="/signin">Sign In</a>
+            </form>
+        </div>
+    </div>
+    <div class="part2">
+        <img src="https://s3.ap-south-1.amazonaws.com/assets.finbingo.com/Finbingo/images/pre-render/SIP-Calculator-1.png" alt="">
+    </div>
+
+</div>
+<%- include("footer.ejs")%>
+
+</body>
+</html>

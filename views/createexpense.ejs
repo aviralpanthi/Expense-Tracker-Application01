@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <style>
+    .page5{
+        background-color: aliceblue;
+        height: 100vh;width: 100vw;
+        padding: 20px;
+    }
+     .page5 .nav5 a{
+        font-size: 1.5vw;
+        height: 10vh;
+        width: 100%;
+padding: 10px 150px;
+margin-top: 20px;
+background-color: rgb(168, 236, 236);
+
+     }   
+
+     .page5 input{
+        
+       border: none;
+padding: 10px 150px 10px 10px;
+background-color: rgb(168, 236, 236);
+     }
+     .page5 select{
+        border: none;
+padding: 10px 170px 10px 10px;
+background-color: rgb(168, 236, 236);
+     }
+      .page5 button{
+         border: none;
+padding: 20px 100px;
+border-radius: 10px;
+font-size: 1.5vw;
+color: rgb(90, 86, 86);
+background-color: rgb(168, 236, 236);
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="page5">
+    <div class="nav5">
+        <%- include("header.ejs")%>
+        <%- include("nav.ejs")%>
+    </div>
+<br><br>
+<form action="/createexpense" method="post">
+
+    <input type="number" name="amount" placeholder="Amount"><br><br>
+    <input type="text" name="remark" placeholder="Remark"><br><br>
+    
+    <select  name="category">
+    <option>Select Categories</option>
+    <option>Travelling</option>
+    <option>Food</option>
+    <option>Family</option>
+    <option>Personal</option>
+    <option>Emi's</option>
+    <option>Extra Expenses</option>
+    </select><br><br>
+    <select name="paymentmode">
+        <option value="paymentmode">Mode of Payment</option>
+        <option value="cash">Cash</option>
+        <option value="online">Online</option>
+        <option value="cheque">Cheque</option>
+
+    </select>
+   
+    <br><br>
+    <button type="submit">Add Expense</button>
+    
+    </form>
+
+    <%- include("footer.ejs")%>
+</div>
+
+</body>
+</html>
